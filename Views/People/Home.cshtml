@@ -1,0 +1,62 @@
+﻿@model IEnumerable<PhoneBook.Models.Person>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<div id='myModal' class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalHtml'></div>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-borderless" id="contacts">
+        <thead>
+            <tr>
+                <th style="text-align: center">Imię i nazwisko</th>
+                <th style="text-align: center">Stanowisko</th>
+                <th style="text-align: center">Nr pokoju</th>
+                <th style="text-align: center">Nr telefonu</th>
+                <th style="text-align: center">Nr komórkowy</th>
+                <th style="text-align: center">Wewnętrzny nr telefonu</th>
+                <th style="text-align: center">Adres e-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Select(x => x.Department).Distinct())
+            {
+                <tr>
+                    <td><strong>@Html.DisplayFor(modelItem => item)</strong></td>
+                </tr>
+                foreach (var item2 in Model.Where(m => m.Department == item).Select(n => n.Subdivision).Distinct())
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item2)</td>
+                    </tr>
+                    foreach (var item3 in Model.Where(p => p.Department == item && p.Subdivision == item2))
+                    {
+                        <tr>
+                            <td><a href="javascript:void(0);" class="details" data-id="@item3.Name">@item3.Name</a></td>
+                            <td align="center">@Html.DisplayFor(modelItem => item3.Title)</td>
+                            <td align="center">@Html.DisplayFor(modelItem => item3.Office)</td>
+                            <td align="center">@Html.DisplayFor(modelItem => item3.PhoneNumber)</td>
+                            <td align="center">@Html.DisplayFor(modelItem => item3.Mobile)</td>
+                            <td align="center">@Html.DisplayFor(modelItem => item3.ExtensionPhoneNumber)</td>
+                            @if (item3.Department == "Szatnia" || item3.Department == "Portiernia")
+                            {
+                                <td align="center"> </td>
+                            }
+                            else
+                            {
+                                <td align="center"><a href="mailto:@Html.DisplayFor(modelItem => item3.Email)">@Html.DisplayFor(modelItem => item3.Email)</a></td>
+                            }
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>

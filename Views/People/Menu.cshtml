@@ -1,0 +1,16 @@
+﻿@model IEnumerable<string>
+
+@foreach (var link in Model)
+{
+    @Html.RouteLink(link, new
+    {
+        controller = "People",
+        action = "Home",
+        department = link.ToLowerInvariant()
+        .Replace(' ', '-').Replace('ą', 'a').Replace('ć', 'c').Replace('ę', 'e').Replace('ł', 'l')
+        .Replace('ń', 'n').Replace('ó', 'o').Replace('ś', 's').Replace('ź', 'z').Replace('ż', 'z')
+    }, new
+    {
+        @class = "btn btn-block btn-link text-dark"
+    })
+}

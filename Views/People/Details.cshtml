@@ -1,0 +1,62 @@
+﻿@model PhoneBook.Models.Person
+
+<div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel">Szczegółowe informacje</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <dl class="dl-horizontal">
+        <dd>
+            <strong>@Html.DisplayFor(modelItem => modelItem.Name)</strong>
+        </dd>
+        <dd>
+            @Html.DisplayFor(modelItem => modelItem.Department)
+        </dd>
+        <dd>
+            @Html.DisplayFor(modelItem => modelItem.Title)
+        </dd>
+    </dl>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            Nr telefonu: @Html.DisplayFor(modelItem => modelItem.ExtensionPhoneNumber)
+        </dd>
+        <dd>
+            Nr komórkowy: @Html.DisplayFor(modelItem => modelItem.Mobile)
+        </dd>
+        @if (Model.Department == "Portiernia")
+        {
+            <dd> </dd>
+        }
+        else
+        {
+            <dd>
+                Nr pokoju: @Html.DisplayFor(modelItem => modelItem.Office)
+            </dd>
+        }
+
+        @if (Model.Department == "Szatnia" || Model.Department == "Portiernia")
+        {
+            <dd> </dd>
+        }
+        else
+        {
+            <dd>
+                Adres e-mail: <a href="mailto:@Html.DisplayFor(modelItem => modelItem.Email)">@Html.DisplayFor(modelItem => modelItem.Email)</a>
+            </dd>
+        }
+    </dl>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            Bezpośredni przełożony:
+            <br />
+            @Html.DisplayFor(modelItem => modelItem.Manager).ToString().Split(',').Select(m => m.Split('=').LastOrDefault()).ToArray().GetValue(0)
+        </dd>
+    </dl>
+</div>

@@ -1,0 +1,22 @@
+﻿/* Body */
+
+body {
+    padding-top: 50px;
+}
+
+/* Table */
+
+table {
+    margin-bottom: 0 !important;
+}
+
+/* Footer */
+
+footer {
+    background: #343a40;
+    padding: 30px;
+}
+
+.copy {
+    padding-top: 30px;
+}

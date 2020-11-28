@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="~/img/image_s.png" />
+    <title>Nazwa Firmy - wykaz telefonów</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <script src="~/Scripts/excel.js"></script>
+    <script src="~/Scripts/details.js"></script>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="navbar-brand">
+            <img src="~/img/image_s.png" width="30" height="30" alt="">
+            Wykaz telefonów NAZWA
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="strona">Strona główna <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Działy
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">@Html.Action("Menu", "People")</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="excelExport();">Excel</button>
+            </form>
+        </div>
+    </nav>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <footer>
+        <div class="row text-center">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+                <p class="text-light copy">
+                    Copyright © 2020
+                    <a href="#" style="color:white"> NAZWA</a>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="" href="#"><img src="~/img/image_l.png" width="100" height="100" alt="" /></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
